@@ -414,18 +414,17 @@ NLOPT_FORCED_STOP = -5
 
 Halted because of a [forced termination](#forced-termination): the user called `nlopt_force_stop(opt)` on the optimization’s `nlopt_opt` object `opt` from the user’s objective function or constraints.
 
-An string with further details about the error is available through `nlopt_get_errmsg` if an error is set:
-```c
-const char * nlopt_get_errmsg(nlopt_opt opt);
-```
-
 You can convert an `nlopt_result` to/from a string identifier (`NLOPT_FOO` converts to/from `"FOO"`) by calling:
-
 ```c
 const char *nlopt_result_to_string(nlopt_result result);
 nlopt_result nlopt_result_from_string(const char *name);
 ```
 
+A string with further details about the error is available through `nlopt_get_errmsg` if an error has been set:
+```c
+const char * nlopt_get_errmsg(nlopt_opt opt);
+```
+Note that if `nlopt_get_errmsg` is called after successful execution of `nlopt_optimize` it returns a NULL pointer.
 
 Local/subsidiary optimization algorithm
 ---------------------------------------
